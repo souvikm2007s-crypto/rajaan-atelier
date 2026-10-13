@@ -1,0 +1,313 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #1a1410;
+  --color-emerald-royal: #2d1f1a;
+  --color-gold-foil: #c9a961;
+  --color-gold-light: #d4b872;
+  --color-parchment: #faf7f2;
+  --color-champagne: #e8dcc4;
+  --color-ruby: #8b2635;
+  --color-gold-dark: #a68b4a;
+  --color-emerald-deep: #1f1510;
+  --color-obsidian-light: #2a2018;
+  --color-royal-cream: #f5f0e8;
+  --color-burgundy: #6b1d2e;
+  --font-display: 'Cinzel Decorative', 'Playfair Display', serif;
+  --font-heading: 'Cinzel', 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #1a1410;
+  color: #f5f0e8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1410;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c9a961, #a68b4a);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d4b872, #c9a961);
+}
+
+/* Gold Dust Shimmer Animation */
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  50% { box-shadow: 0 0 20px 5px rgba(212, 175, 55, 0.2); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes particleFloat {
+  0%, 100% { opacity: 0; transform: translateY(0) scale(0); }
+  10% { opacity: 1; transform: scale(1); }
+  90% { opacity: 0.5; }
+  100% { opacity: 0; transform: translateY(-100vh) scale(0.5); }
+}
+
+/* Utility Classes */
+.gold-shimmer {
+  background: linear-gradient(90deg, #D4AF37 0%, #E8C84A 25%, #D4AF37 50%, #E8C84A 75%, #D4AF37 100%);
+  background-size: 200% auto;
+  animation: goldShimmer 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-shimmer-bg {
+  background: linear-gradient(90deg, #D4AF37 0%, #E8C84A 25%, #D4AF37 50%, #E8C84A 75%, #D4AF37 100%);
+  background-size: 200% auto;
+  animation: goldShimmer 3s linear infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+.animate-ticker {
+  animation: tickerScroll 30s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+/* Solid Royal Dark Backgrounds */
+.glass-nav {
+  background: #1a1410;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.3);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card {
+  background: #2a2018;
+  border: 1px solid rgba(201, 169, 97, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Gold Border Gradient */
+.gold-border {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+.gold-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #D4AF37, #E8C84A, #D4AF37);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Velvet Texture Overlay */
+.velvet-overlay {
+  position: relative;
+}
+.velvet-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(11, 12, 16, 0.3) 100%);
+  pointer-events: none;
+}
+
+/* Magnetic Button */
+.btn-magnetic {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn-magnetic::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+.btn-magnetic:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Product Card Hover */
+.product-card {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+}
+.product-card .product-image-overlay {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.product-card:hover .product-image-overlay {
+  opacity: 1;
+}
+
+/* Star Rating */
+.royal-star {
+  color: #D4AF37;
+  filter: drop-shadow(0 0 2px rgba(212, 175, 55, 0.5));
+}
+
+/* Parallax Container */
+.parallax-container {
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+/* Custom Cursor Effect */
+.cursor-gold {
+  cursor: none;
+}
+
+/* Noise Texture */
+.noise-texture {
+  position: relative;
+}
+.noise-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Progress Bar */
+.shipping-progress {
+  background: linear-gradient(90deg, #D4AF37, #E8C84A);
+  transition: width 0.8s ease;
+}
+
+/* Section Transitions */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tab Active */
+.tab-active {
+  color: #D4AF37;
+  border-bottom: 2px solid #D4AF37;
+}
+
+/* Lookbook Pin */
+.lookbook-pin {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+/* Mega Menu */
+.mega-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+.mega-menu-trigger:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Mobile Bottom Bar */
+@media (max-width: 768px) {
+  .mobile-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(11, 12, 16, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 8px 16px;
+  }
+}
