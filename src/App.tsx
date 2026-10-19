@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { StoreProvider } from './store/StoreContext';
 import { Header } from './components/Header';
 import { DeliveryBanner } from './components/DeliveryBanner';
@@ -227,6 +228,7 @@ function App() {
   return (
     <StoreProvider>
       <AppContent />
+      <Analytics />
     </StoreProvider>
   );
 }
